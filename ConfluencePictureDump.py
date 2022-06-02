@@ -44,7 +44,7 @@ def download_pic(pic_url, page_id):
 	return local_pic_path, name
 	
 
-soursePageId = confluence.get_page_id(spaceKey, sourceParentPageName)
+soursePageId = confluence.get_page_id(sourceSpaceKey, sourceParentPageName)
 targetPageId = confluence.get_page_id(targetSpaceKey, targetParentPageName)
 childList = list(confluence.get_page_child_by_type(soursePageId, type='page', start=None, limit=None))
 for child in childList:
