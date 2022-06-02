@@ -1,5 +1,5 @@
 # ConfluencePictureDump
-> Help save external url picture as attachment in Confluence.
+> Help save external-url pictures as attachments in Confluence.
 ## Usage
 1. prepare python3 envirement
 2. download `ConfluencePictureDump.py`
