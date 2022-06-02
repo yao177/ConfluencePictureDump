@@ -32,6 +32,7 @@ def upload_pic(img_url, page_id):
 
 
 def download_pic(pic_url, page_id):
+	pic_url = pic_url.split('?')[0]
 	name = pic_url.split('/')[-1]
 	dir_path = './pic/'
 	if not os.path.exists(dir_path):
