@@ -26,8 +26,9 @@ File directories show below.
 All children pages in `sourceParentPage` will be converted.
 Note, `sourceSpace` can be same as `targetSpace`, but it's NOT recommanded to set `sourceParentPage` same as `targetParentPage` because the script would convert again.
 
-#### My practices
-I create a page called 'template inbox' in my self space as `sourceParentPage`, and set it as default in Web Clipper. Then, I create a page called 'collection box' as `targetParentPage`. At last, I run a cron task on my mac to auto run the script per 4 hours. (I'm Chinese, don't laugh out my pool english😊)
+## TODO
+[x] adapt manually copied contents
+[] adapt Web-Clipper APP
 
 ## Background
 When I paste external website page into confluence, it just paste the url of picture but not the picture attchment. And confluence official is not going to 'fix' it. Some cases will be listed below:
