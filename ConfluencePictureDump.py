@@ -7,6 +7,7 @@ import argparse
 from bs4 import BeautifulSoup
 from urllib.request import urlretrieve
 import os.path
+import time
 
 import magic
 from atlassian import Confluence
@@ -41,7 +42,15 @@ def download_pic(pic_url, page_id):
 	if not os.path.exists(dir_path):
 		os.makedirs(dir_path)
 	local_pic_path = dir_path + '/' + name
-	urlretrieve(pic_url, local_pic_path)
+	if os.path.exists(local_pic_path):
+		return local_pic_path, name
+	while True:
+		try:
+			urlretrieve(pic_url, local_pic_path)
+			break
+		except:
+			time.sleep(5)
+			continue
 	return local_pic_path, name
 	
 
@@ -57,8 +66,9 @@ for child in childList:
 	for imgTag in soup.select('ac\:image'):
 #		print(imgTag)
 		for urlTag in imgTag.children:
-			if urlTag.name != 'ri:url':
+			if urlTag.name != 'ri:url' or 'ri:value' not in urlTag.attrs:
 				continue
+			time.sleep(3)
 			fileName = upload_pic(urlTag['ri:value'], childId)
 			urlTag.name = 'ri:attachment'
 			del urlTag['ri:value']
@@ -67,6 +77,7 @@ for child in childList:
 				urlTag.parent.parent.parent.span.unwrap()
 			except:
 				print('Warn: unwrap fail!')
+				continue
 #	print(soup)
 	updateRes = confluence.update_existing_page(childId, childPage.get('title'), body=str(soup))
 	try:
@@ -76,3 +87,4 @@ for child in childList:
 			print(f'{childId} move success!')
 	except:
 		print(f'{childId} update fail! Maybe something goes wrong.')
+	time.sleep(10)
