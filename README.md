@@ -27,8 +27,8 @@ All children pages in `sourceParentPage` will be converted.
 Note, `sourceSpace` can be same as `targetSpace`, but it's NOT recommanded to set `sourceParentPage` same as `targetParentPage` because the script would convert again.
 
 ## TODO
-[x] adapt manually copied contents
-[] adapt Web-Clipper APP
+- [x] adapt manually copied contents
+- [ ] adapt Web-Clipper APP
 
 ## Background
 When I paste external website page into confluence, it just paste the url of picture but not the picture attchment. And confluence official is not going to 'fix' it. Some cases will be listed below:
